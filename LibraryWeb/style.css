@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;             
+}
+body{
+    background-color: #F5FCFF;
+}
+
+.hr_upper_page{
+    height: 45px;
+    background-color: #96CCE7;
+}
+
+
+  a:link { text-decoration: none; }
+  a:visited { text-decoration: none; }
+  a:hover { text-decoration: none; }
+  a:active { text-decoration: none; }
+
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    background-color: white;
+}
+
+
+nav img{
+    width: 250px;
+}
+
+.verticalLine {
+    height: 100px;
+    border-right: 2px solid #00AAFF;
+    position: absolute;
+    right: 74%;
+}
+
+
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.context img{
+    position: absolute;
+    top:25%;
+    left: 5%;
+    height: 60%;
+}
+
+.context div{
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    width: 20%;
+    font-size: 200%;
+}
+
+.context div input{
+    font-size: 120%;
+}
+
+.footer{
+    background-color: #4c4e4c;
+    flex: 1;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+
+.footer ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 30px 246px;
+    position: relative;
+}
+
+.footer ul li p{
+    color: white;
+}
+
+.searchNoResultPannel{
+    position: absolute;
+    right: 40%;
+    bottom: 57%;
+    font-size: 23px;
+}
+
+.searchVerticalLine{
+    height: 550px;
+    border-right: 2px solid #00AAFF;
+    position: absolute;
+    right: 85%;
+    bottom: 10%;
+}
+
+.searchResultHeader{
+    font-size: 40px;
+    position: absolute;
+    left: 6%;
+    top: 23%;
+}
+
+.bookAddedPannel{
+    font-size: 23px;
+    position: absolute;
+    right: 59%;
+    bottom: 62%;
+}
+
