@@ -1,4 +1,4 @@
-create table Users
+create table if not exists Users
 (
     UserID    int(6) primary key auto_increment,
     FirstName varchar(20)   not null,
@@ -7,38 +7,38 @@ create table Users
     Number    varchar(20)
 );
 
-create table Reservations
+create table if not exists Reservations
 (
     ReservationID   int(6) primary key auto_increment,
     ReservationDate date                    not null,
-    UserID          int(6) references Users not null,
-    BookID          int(6) references Books not null,
+    UserID          int(6) references Users,
+    BookID          int(6) references Books,
     ExpireDate      date                    not null
 );
 
-create table Books
+create table if not exists Books
 (
     BookID          int(6) primary key auto_increment,
     Title           varchar(200),
-    GenreID         int(6) references Books   not null,
-    AuthorID        int(6) references Authors not null,
-    StatusAvailable boolean                   not null,
+    GenreID         int(6) references Books,
+    AuthorID        int(6) references Authors,
+    StatusAvailable boolean,
     Description     varchar(200)
 );
 
-create table BooksGenres
+create table if not exists BooksGenres
 (
-    BookID  int(6) references Books  not null,
-    GenreID int(6) references Genres not null
+    BookID  int(6) references Books  ,
+    GenreID int(6) references Genres
 );
 
-create table Genres
+create table if not exists Genres
 (
     GenreID   int(6) primary key auto_increment,
     GenreName varchar(60) not null
 );
 
-create table Authors
+create table if not exists Authors
 (
     AuthorID  int(6) primary key auto_increment,
     FirstName varchar(20) not null,
@@ -47,7 +47,7 @@ create table Authors
     DeathYear year        not null
 );
 
-create table BooksAuthors
+create table if not exists BooksAuthors
 (
     BookID   int(6) not null,
     AuthorID int(6) not null
