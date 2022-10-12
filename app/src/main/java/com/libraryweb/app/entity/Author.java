@@ -9,12 +9,16 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long AuthorID;
+
     @Column(name = "FirstName", nullable = false)
     private String FirstName;
+
     @Column(name = "LastName", nullable = false)
     private String LastName;
+
     @Column(name = "BirthYear", nullable = false)
     private Year BirthYear;
+
     @Column(name = "DeathYear", nullable = false)
     private Year DeathYear;
 

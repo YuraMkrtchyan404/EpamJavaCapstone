@@ -9,19 +9,25 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ReservationID;
+
     @Column(name = "ReservationDate", nullable = false)
     private Date ReservationDate;
-    @ManyToOne(targetEntity = User.class)
-    private Long UserID;
-    @ManyToOne(targetEntity = Book.class)
-    private Long BookID;
+
+    @JoinColumn(name = "UserID")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User User;
+
+    @JoinColumn(name = "BookID")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Book Book;
+
     @Column(name = "ExpireDate", nullable = false)
     private Date ExpireDate;
 
-    public Reservation(Date ReservationDate, Long UserID, Long BookID, Date ExpireDate) {
+    public Reservation(Date ReservationDate, User User, Book Book, Date ExpireDate) {
         this.ReservationDate = ReservationDate;
-        this.UserID = UserID;
-        this.BookID = BookID;
+        this.User = User;
+        this.Book = Book;
         this.ExpireDate = ExpireDate;
     }
 
@@ -32,39 +38,39 @@ public class Reservation {
         return ReservationID;
     }
 
-    public void setReservationID(Long ReservationID) {
-        this.ReservationID = ReservationID;
+    public void setReservationID(Long reservationID) {
+        ReservationID = reservationID;
     }
 
     public Date getReservationDate() {
         return ReservationDate;
     }
 
-    public void setReservationDate(Date ReservationDate) {
-        this.ReservationDate = ReservationDate;
+    public void setReservationDate(Date reservationDate) {
+        ReservationDate = reservationDate;
     }
 
-    public Long getUserID() {
-        return UserID;
+    public com.libraryweb.app.entity.User getUser() {
+        return User;
     }
 
-    public void setUserID(Long UserID) {
-        this.UserID = UserID;
+    public void setUser(com.libraryweb.app.entity.User user) {
+        User = user;
     }
 
-    public Long getBookID() {
-        return BookID;
+    public com.libraryweb.app.entity.Book getBook() {
+        return Book;
     }
 
-    public void setBookID(Long BookID) {
-        this.BookID = BookID;
+    public void setBook(com.libraryweb.app.entity.Book book) {
+        Book = book;
     }
 
     public Date getExpireDate() {
         return ExpireDate;
     }
 
-    public void setExpireDate(Date ExpireDate) {
-        this.ExpireDate = ExpireDate;
+    public void setExpireDate(Date expireDate) {
+        ExpireDate = expireDate;
     }
 }

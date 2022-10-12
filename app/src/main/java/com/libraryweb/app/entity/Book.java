@@ -1,31 +1,48 @@
 package com.libraryweb.app.entity;
 
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "Books")
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long BookID;
+
     @Column(name = "Title")
     private String Title;
-    @ManyToMany(targetEntity = Genre.class)
-    private Long GenreID;
-    @ManyToMany(targetEntity = Author.class)
-    private Long AuthorID;
+
+    @ManyToMany
+    @JoinTable(
+            name = "booksgenres",
+            joinColumns = @JoinColumn(name = "BookID", referencedColumnName = "BookID"),
+            inverseJoinColumns = @JoinColumn(name = "GenreID", referencedColumnName = "GenreID")
+    )
+    private Set<Genre> Genres;
+
+    @ManyToMany
+    @JoinTable(
+            name = "booksauthors",
+            joinColumns = @JoinColumn(name = "BookID", referencedColumnName = "BookID"),
+            inverseJoinColumns = @JoinColumn(name = "AuthorID", referencedColumnName = "AuthorID")
+    )
+    private Set<Author> Authors;
+
     @Column(name = "StatusAvailable")
     private Boolean StatusAvailable;
+
     @Column(name = "Description")
     private String Description;
 
     public Book() {
     }
 
-    public Book(String title, Long genreID, Long authorID, Boolean statusAvailable, String description) {
+    public Book(String title, Set<Genre> genres, Set<Author> authors, Boolean statusAvailable, String description) {
         Title = title;
-        GenreID = genreID;
-        AuthorID = authorID;
+        Genres = genres;
+        Authors = authors;
         StatusAvailable = statusAvailable;
         Description = description;
     }
@@ -46,20 +63,20 @@ public class Book {
         Title = title;
     }
 
-    public Long getGenreID() {
-        return GenreID;
+    public Set<Genre> getGenres() {
+        return Genres;
     }
 
-    public void setGenreID(Long genreID) {
-        GenreID = genreID;
+    public void setGenres(Set<Genre> genres) {
+        Genres = genres;
     }
 
-    public Long getAuthorID() {
-        return AuthorID;
+    public Set<Author> getAuthors() {
+        return Authors;
     }
 
-    public void setAuthorID(Long authorID) {
-        AuthorID = authorID;
+    public void setAuthors(Set<Author> authors) {
+        Authors = authors;
     }
 
     public Boolean getStatusAvailable() {

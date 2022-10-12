@@ -8,6 +8,7 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long GenreID;
+
     @Column(name = "GenreName", nullable = false)
     private String GenreName;
 
