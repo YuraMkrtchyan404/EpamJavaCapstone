@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Library Web</title>
+    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<hr class="hr_upper_page"/>
+
+<section class="header">
+    <nav>
+        <a href="index.html"
+        ><img src="../static/images/header.png" alt="Library Web"/>
+        </a>
+
+        <div class="verticalLine">
+            <p></p>
+        </div>
+
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="history.html">HISTORY</a></li>
+            </ul>
+        </div>
+    </nav>
+</section>
+
+<section class="searchResultContext">
+    <h1 class="searchResultHeader">Search Result</h1>
+    <div class="searchVerticalLine"><p></p></div>
+
+    <div class="card">
+
+        <div class="image">
+            <img src="../static/images/littleprince.jpg">
+        </div>
+        <div class="title">
+            <h1>The Little King</h1>
+            <h2 class="available">Available</h2>
+        </div>
+        <div class="des">
+            <button>Description</button>
+            <button>Reserve</button>
+        </div>
+        <div class="descriptionText">
+            <p>The narrator begins with a discussion on the nature of grown-ups
+                and their inability to perceive "important things". As a test to
+                determine if a grown-up is as enlightened as a child, he shows
+                them a picture depicting a snake which has eaten an elephant. The
+                grown-ups always reply that the picture depicts a hat, and so he
+                knows to only talk of "reasonable" things to them, rather than the
+                fanciful.</p>
+        </div>
+    </div>
+
+    <div class = "container">
+        <div class = "row">
+            <h1> Book Search Result </h1>
+        </div>
+        <table class = "table table-striped table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th> Title </th>
+                    <th> Author </th>
+                    <th> Description </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each = "book: ${books}">
+                    <td th:text="${book.Title}"></td>
+                    <td th:text="${book.Authors}"></td>
+                    <td th:text="${book.Description}"></td>
+                    <td th:text="${book.StatusAvailable}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+
+</body>
+</html>
