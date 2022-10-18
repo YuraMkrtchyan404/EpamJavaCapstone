@@ -7,11 +7,11 @@ import java.util.Date;
 @Table(name = "Reservations")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ReservationID;
 
-    @Column(name = "ReservationDate", nullable = false)
-    private Date ReservationDate;
+    @Column(name = "reservation_date")
+    private Date ReservationDate = null;
 
     @JoinColumn(name = "UserID")
     @ManyToOne(cascade = CascadeType.ALL)
@@ -21,7 +21,7 @@ public class Reservation {
     @ManyToOne(cascade = CascadeType.ALL)
     private Book Book;
 
-    @Column(name = "ExpireDate", nullable = false)
+    @Column(name = "expire_date")
     private Date ExpireDate;
 
     public Reservation(Date ReservationDate, User User, Book Book, Date ExpireDate) {
