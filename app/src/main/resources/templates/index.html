@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Library Web</title>
-    <link rel="stylesheet" href="../static/style.css"/>
-    <link rel="stylesheet" th:href="@{resources/static/style.css}" >
+<!--    <link rel="stylesheet" href="../static/style.css"/>-->
+    <link rel="stylesheet" th:href="@{style.css}" >
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 <section class="header">
     <nav>
         <a href="index.html"
-        ><img src="../static/images/header.png" alt="Library Web"/>
+        ><img src="/images/header.png" alt="Library Web"/>
         </a>
 
         <div class="verticalLine">
@@ -33,7 +33,7 @@
 
 <section class="context">
     <img
-            src="../static/images/library.png"
+            src="/images/library.png"
             alt="Library and great educational atmosphere"
     />
     <div>
@@ -52,7 +52,6 @@
         <div>&nbsp;</div>
 
           <form th:action="@{/books/search}">
-              Search:
               <input type="text" name="keyword" th:value="${keyword}" />
               &nbsp;
               <input type="submit" value="Search">
