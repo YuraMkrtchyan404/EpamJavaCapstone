@@ -54,7 +54,10 @@
                 <td th:text="${book.description}"></td>
                 <td th:text="${book.statusAvailable} ? 'Available' : 'Not Available'"></td>
                 <td><a th:href="@{/books/confirm/{id}(id = ${book.bookID})}"
-                       class="btn btn-primary">Reserve</a></td>
+                       class="btn btn-success">Reserve</a>
+                    <a th:href="@{/books/update/{id}(id = ${book.bookID})}"
+                       class="btn btn-warning">Update</a>
+                    </td>
             </tr>
             </tbody>
         </table>

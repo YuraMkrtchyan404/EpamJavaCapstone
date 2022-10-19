@@ -19,4 +19,8 @@ public interface BookService {
     User getUserByID(Long id);
 
     List<Reservation> getAllReservations();
+
+    Book saveBook(Book book);
+
+    Book updateBook(Book book);
 }

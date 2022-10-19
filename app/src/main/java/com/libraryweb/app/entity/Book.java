@@ -30,8 +30,8 @@ public class Book {
     )
     private Set<Author> Authors;
 
-    @Column(name = "StatusAvailable")
-    private Boolean StatusAvailable;
+    @Column(name = "status_available")
+    private Boolean StatusAvailable = true;
 
     @Column(name = "Description")
     private String Description;

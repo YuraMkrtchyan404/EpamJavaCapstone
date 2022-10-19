@@ -75,4 +75,14 @@ public class BookServiceImpl implements BookService {
         reservations.sort((reservation1, reservation2) -> (int) (reservation2.getReservationID() - reservation1.getReservationID()));
         return reservations;
     }
+
+    @Override
+    public Book saveBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    @Override
+    public Book updateBook(Book book) {
+        return bookRepository.save(book);
+    }
 }
