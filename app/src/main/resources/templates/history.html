@@ -1,58 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Library Web</title>
-    <link rel="stylesheet" th:href="@{style.css}" >
-  </head>
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-  <body>
-    <hr class="hr_upper_page" />
+<body>
+<hr class="hr_upper_page"/>
 
-    <section class="header">
-      <nav>
-        <a href="index.html"
-          ><img src="/images/header.png" alt="Library Web" />
+<section class="header">
+    <nav>
+        <a th:href="@{/}">
+            <img src="/images/header.png" alt="Library Web"/>
         </a>
 
-        <div class="verticalLine">
-          <p></p>
-        </div>
-
         <div class="nav-links">
-          <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="login.html">LOG IN</a></li>
-          </ul>
+            <ul>
+                <li><a th:href="@{/}">HOME</a></li>
+                <li><a th:href="@{/history}">HISTORY</a></li>
+            </ul>
         </div>
-      </nav>
-    </section>
+    </nav>
+</section>
 
-    <section class="seachResultContext">
-      <h1 class="searchResultHeader">History</h1>
-      <div class="searchVerticalLine"><p></p></div>
-      
-      <div class="card">
-        <div class="image">
-            <img src="/images/littleprince.jpg">
+<section class="searchResultContext">
+
+    <div class="container">
+        <div class="row">
+            <h1> Books </h1>
         </div>
-        <div class="title">
-            <h1>The Little King</h1>
-            <h2 class="notavailable">Not Available</h2>
-        </div>   
-        <div class="bookinfo">
-            <h4>Genres: Fairy tale, Children's literature, Fable,
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th> Title</th>
+                <th> Description</th>
+                <th> Reservation Date</th>
+                <th> Expiration Date</th>
+            </tr>
+            </thead>
 
-                Novella, Speculative fiction, Adventure fiction</h4>
-            <h4>Antoine de Saint-Exupéry (1900 - 1944)</h4>
-            <h4>Reservation Date: 08/28/2022</h4>
-            <h4>Expire Date: 09/28/2022</h4>
-        </div>             
+            <tbody>
+            <tr th:if="${history.isEmpty()}">
+                <td colspan="2"> No Reservations In The History Yet</td>
+            </tr>
+            <tr th:each="reservation : ${history}">
+                <td th:text="${reservation.book.title}"></td>
+                <td th:text="${reservation.book.description}"></td>
+                <td th:text="${reservation.reservationDate}"></td>
+                <td th:text="${reservation.expireDate}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    </section>
-
-    
-  </body>
+</section>
+</body>
 </html>

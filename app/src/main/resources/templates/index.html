@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Library Web</title>
-<!--    <link rel="stylesheet" href="../static/style.css"/>-->
-    <link rel="stylesheet" th:href="@{style.css}" >
+    <link rel="stylesheet" th:href="@{style.css}">
 </head>
 
 <body>
@@ -14,8 +13,8 @@
 
 <section class="header">
     <nav>
-        <a href="index.html"
-        ><img src="/images/header.png" alt="Library Web"/>
+        <a th:href="@{/}">
+            <img src="/images/header.png" alt="Library Web"/>
         </a>
 
         <div class="verticalLine">
@@ -24,8 +23,8 @@
 
         <div class="nav-links">
             <ul>
-                <li><a th:href="@{index.html}">HOME</a></li>
-                <li><a th:href="login.html">LOG IN</a></li>
+                <li><a th:href="@{/}">HOME</a></li>
+                <li><a th:href="@{/history}">HISTORY</a></li>
             </ul>
         </div>
     </nav>
@@ -51,11 +50,11 @@
 
         <div>&nbsp;</div>
 
-          <form th:action="@{/books/search}">
-              <input type="text" name="keyword" th:value="${keyword}" />
-              &nbsp;
-              <input type="submit" value="Search">
-          </form>
+        <form th:action="@{/books/search}">
+            <input type="text" name="keyword" th:value="${keyword}"/>
+            &nbsp;
+            <input type="submit" value="Search">
+        </form>
 
     </div>
 </section>
@@ -68,8 +67,8 @@
     </ul>
 </section>
 <script type="text/javascript">
-    function AllBooks(){
-        window.location= '/books';
+    function AllBooks() {
+        window.location = '/books';
     }
 </script>
 </body>

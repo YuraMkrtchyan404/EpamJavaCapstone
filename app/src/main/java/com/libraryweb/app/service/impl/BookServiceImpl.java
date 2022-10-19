@@ -8,12 +8,11 @@ import com.libraryweb.app.repository.ReservationRepository;
 import com.libraryweb.app.repository.UserRepository;
 import com.libraryweb.app.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.Date;
 import java.util.List;
 
@@ -54,8 +53,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public Reservation reserveBook(Book book) {
         User user = userRepository.findAll().get(0);
-        Date now = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Date expireDate = Date.from(LocalDate.now().plusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date now = new Date(System.currentTimeMillis());
+        LocalDate expireDateLocalDate = LocalDate.now().plusMonths(1);
+        Date expireDate = Date.from(expireDateLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Reservation newReservation = new Reservation();
         newReservation.setBook(book);
         newReservation.setReservationDate(now);
@@ -67,5 +67,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public User getUserByID(Long id) {
         return userRepository.findById(1L).get();
+    }
+
+    @Override
+    public List<Reservation> getAllReservations() {
+        List<Reservation> reservations = reservationRepository.findAll();
+        reservations.sort((reservation1, reservation2) -> (int) (reservation2.getReservationID() - reservation1.getReservationID()));
+        return reservations;
     }
 }
