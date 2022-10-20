@@ -63,26 +63,26 @@ public class BookController {
     }
 
     @GetMapping("/books/new")
-    public String addNewBookForm(Model model){
+    public String addNewBookForm(Model model) {
         Book book = new Book();
         model.addAttribute("book", book);
         return "new_book";
     }
 
     @PostMapping("/books")
-    public String addNewBook(@ModelAttribute("book") Book book){
+    public String addNewBook(@ModelAttribute("book") Book book) {
         bookService.saveBook(book);
         return "redirect:/books";
     }
 
     @GetMapping("/books/update/{id}")
-    public String editBookForm(@PathVariable Long id, Model model){
+    public String editBookForm(@PathVariable Long id, Model model) {
         model.addAttribute("book", bookService.getBookByID(id));
         return "update_book";
     }
 
     @PostMapping("/books/update/{id}")
-    public String updateBook(@PathVariable Long id, @ModelAttribute("book") Book book, Model model){
+    public String updateBook(@PathVariable Long id, @ModelAttribute("book") Book book, Model model) {
         Book existingBook = bookService.getBookByID(id);
         existingBook.setTitle(book.getTitle());
         existingBook.setDescription(book.getDescription());

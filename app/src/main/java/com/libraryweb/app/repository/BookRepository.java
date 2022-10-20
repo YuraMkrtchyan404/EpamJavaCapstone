@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-// JpaRepository already inherits the @Repository annotation
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
