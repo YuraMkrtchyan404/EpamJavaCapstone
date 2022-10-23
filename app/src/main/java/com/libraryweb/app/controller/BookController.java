@@ -82,7 +82,7 @@ public class BookController {
     }
 
     @PostMapping("/books/update/{id}")
-    public String updateBook(@PathVariable Long id, @ModelAttribute("book") Book book, Model model) {
+    public String updateBook(@PathVariable Long id, @ModelAttribute("book") Book book) {
         Book existingBook = bookService.getBookByID(id);
         existingBook.setTitle(book.getTitle());
         existingBook.setDescription(book.getDescription());

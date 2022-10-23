@@ -13,4 +13,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT book FROM Book book WHERE book.Title LIKE %?1% OR book.Description LIKE %?1%")
     public List<Book> search(String keyword);
+
+//    public abstract List<Book> findBooksByTitleContainingOrDescriptionContaining(String title, String description);
 }
